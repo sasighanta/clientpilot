@@ -1,103 +1,479 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  Users,
+  Search,
+  ShieldCheck,
+  FolderOpen,
+  TrendingUp,
+  Clock3,
+  FilePlus2,
+  LayoutDashboard,
+  CheckCircle2,
+  Quote,
+  Star,
+} from "lucide-react";
+
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Navbar from "@/components/Navbar";
+import LeadForm from "@/components/forms/LeadForm";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen bg-slate-50">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-8 py-16 lg:grid-cols-2">
+        <div>
+          <span className="rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-700">
+            Lightweight CRM
+          </span>
+
+          <h1 className="mt-6 max-w-xl text-6xl font-black leading-tight text-slate-950">
+            Manage Client Leads
+            <br />
+            Without the Chaos.
+          </h1>
+
+          <p className="mt-6 max-w-lg text-lg leading-8 text-slate-600">
+            Never lose another inquiry.
+            <br />
+            <br />
+            ClientPilot helps agencies capture leads,
+            organize conversations and track every client
+            from one modern dashboard.
+          </p>
+
+          <div className="mt-10 flex gap-4">
+            <Link
+              href="#lead-form"
+              className="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-700"
+            >
+              Get Started
+            </Link>
+
+            <Link
+              href="/login"
+              className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold transition-all duration-300 hover:bg-slate-100"
+            >
+              Admin Login
+            </Link>
+          </div>
+
+          <div className="mt-8 flex items-center gap-3">
+            <span className="text-xl text-yellow-500">
+              ⭐⭐⭐⭐⭐
+            </span>
+
+            <p className="text-sm text-slate-500">
+              Designed for digital agencies and
+              freelancers.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4">
+            <Card> 
+              <Users className="h-8 w-8 text-emerald-600" />
+
+              <div>
+                <h3 className="font-semibold">
+                  Lead Management
+                </h3>
+
+                <p className="text-sm text-slate-500">
+                  Capture every inquiry automatically.
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <Search className="h-8 w-8 text-blue-600" />
+
+              <div>
+                <h3 className="font-semibold">
+                  Smart Search
+                </h3>
+
+                <p className="text-sm text-slate-500">
+                  Find clients instantly using powerful
+                  search.
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <CheckCircle2 className="h-8 w-8 text-amber-500" />
+
+              <div>
+                <h3 className="font-semibold">
+                  Status Tracking
+                </h3>
+
+                <p className="text-sm text-slate-500">
+                  Monitor every lead from inquiry to
+                  follow-up.
+                </p>
+              </div>
+            </Card>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+
+        <div id="lead-form">
+          <LeadForm />
+        </div>
+      </section>
+
+      {/* Why Choose ClientPilot */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-8">
+          <SectionHeading
+  badge="Why Choose ClientPilot?"
+  title="Everything You Need to Manage Leads"
+  description="ClientPilot helps agencies capture inquiries, organize client information and manage follow-ups from one intuitive dashboard."
+/>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <Card>
+              <div className="mb-6 inline-flex rounded-2xl bg-emerald-100 p-4">
+                <ShieldCheck className="h-8 w-8 text-emerald-600" />
+              </div>
+
+              <h3 className="text-xl font-bold">
+                Secure Data
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Safely store and manage every client
+                inquiry.
+              </p>
+            </Card>
+
+            <Card>
+              <div className="mb-6 inline-flex rounded-2xl bg-blue-100 p-4">
+                <FolderOpen className="h-8 w-8 text-blue-600" />
+              </div>
+
+              <h3 className="text-xl font-bold">
+                Organized Dashboard
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                View every lead in one clean workspace.
+              </p>
+            </Card>
+
+            <Card>
+              <div className="mb-6 inline-flex rounded-2xl bg-amber-100 p-4">
+                <TrendingUp className="h-8 w-8 text-amber-600" />
+              </div>
+
+              <h3 className="text-xl font-bold">
+                Track Progress
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Monitor each lead from inquiry to
+                follow-up.
+              </p>
+            </Card>
+
+            <Card>
+              <div className="mb-6 inline-flex rounded-2xl bg-purple-100 p-4">
+                <Clock3 className="h-8 w-8 text-purple-600" />
+              </div>
+
+              <h3 className="text-xl font-bold">
+                Save Time
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Spend less time managing spreadsheets and
+                more time serving clients.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+            {/* How It Works */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-8">
+          <SectionHeading
+  badge="How It Works"
+  color="blue"
+  title="Simple Workflow"
+  description="From capturing a new inquiry to tracking its progress, ClientPilot keeps everything organized in one place."
+/>
+
+          <div className="mt-16 flex flex-col items-center gap-8 lg:flex-row lg:justify-center">
+            {/* Step 1 */}
+            <Card>
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
+                <FilePlus2 className="h-8 w-8 text-emerald-600" />
+              </div>
+
+              <div className="mb-3 text-sm font-bold text-emerald-600">
+                STEP 1
+              </div>
+
+              <h3 className="text-2xl font-bold">
+                Submit Inquiry
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Clients submit their project details through
+                the lead form.
+              </p>
+            </Card>
+
+            <div className="hidden text-5xl text-slate-300 lg:block">
+              →
+            </div>
+
+            {/* Step 2 */}
+            <Card>
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
+                <LayoutDashboard className="h-8 w-8 text-blue-600" />
+              </div>
+
+              <div className="mb-3 text-sm font-bold text-blue-600">
+                STEP 2
+              </div>
+
+              <h3 className="text-2xl font-bold">
+                Manage Leads
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Review every inquiry inside a centralized
+                dashboard.
+              </p>
+            </Card>
+
+            <div className="hidden text-5xl text-slate-300 lg:block">
+              →
+            </div>
+
+            {/* Step 3 */}
+            <Card>
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
+                <CheckCircle2 className="h-8 w-8 text-emerald-600" />
+              </div>
+
+              <div className="mb-3 text-sm font-bold text-emerald-600">
+                STEP 3
+              </div>
+
+              <h3 className="text-2xl font-bold">
+                Track Status
+              </h3>
+
+              <p className="mt-3 text-slate-500">
+                Update lead progress and keep your pipeline
+                organized.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+      {/* Trusted Platform */}
+<section className="bg-slate-900 py-20">
+  <div className="mx-auto max-w-7xl px-8">
+    <div className="text-center">
+      <span className="rounded-full bg-emerald-600/20 px-4 py-2 text-sm font-semibold text-emerald-400">
+        Trusted Platform
+      </span>
+
+      <h2 className="mt-6 text-5xl font-bold text-white">
+        Built for Modern Agencies
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-400">
+        ClientPilot simplifies lead management so teams can
+        focus on building relationships instead of tracking
+        spreadsheets.
+      </p>
+    </div>
+
+    <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {/* Card 1 */}
+      <div className="cursor-pointer rounded-3xl border border-slate-700 bg-slate-800 p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500">
+        <Users className="mx-auto mb-5 h-10 w-10 text-emerald-400" />
+
+        <h3 className="text-5xl font-black text-white">
+          100+
+        </h3>
+
+        <p className="mt-3 text-slate-400">
+          Leads Managed
+        </p>
+      </div>
+
+      {/* Card 2 */}
+      <div className="cursor-pointer rounded-3xl border border-slate-700 bg-slate-800 p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500">
+        <TrendingUp className="mx-auto mb-5 h-10 w-10 text-emerald-400" />
+
+        <h3 className="text-5xl font-black text-white">
+          99%
+        </h3>
+
+        <p className="mt-3 text-slate-400">
+          Response Tracking
+        </p>
+      </div>
+
+      {/* Card 3 */}
+      <div className="cursor-pointer rounded-3xl border border-slate-700 bg-slate-800 p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500">
+        <Clock3 className="mx-auto mb-5 h-10 w-10 text-emerald-400" />
+
+        <h3 className="text-5xl font-black text-white">
+          24/7
+        </h3>
+
+        <p className="mt-3 text-slate-400">
+          Access Anywhere
+        </p>
+      </div>
+
+      {/* Card 4 */}
+      <div className="cursor-pointer rounded-3xl border border-slate-700 bg-slate-800 p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500">
+        <ShieldCheck className="mx-auto mb-5 h-10 w-10 text-emerald-400" />
+
+        <h3 className="text-5xl font-black text-white">
+          Secure
+        </h3>
+
+        <p className="mt-3 text-slate-400">
+          Cookie Authentication
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Testimonials */}
+<section className="bg-white py-20">
+  <div className="mx-auto max-w-7xl px-8">
+    <SectionHeading
+  badge="Testimonials"
+  color="amber"
+  title="What People Like About ClientPilot"
+  description="Sample testimonials demonstrating the type of feedback a lightweight CRM aims to deliver."
+/>
+
+    <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+      {/* Card 1 */}
+      <Card> 
+        <Quote className="mb-5 h-10 w-10 text-emerald-600" />
+
+        <div className="mb-4 flex gap-1 text-amber-500">
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+        </div>
+
+        <p className="leading-7 italic text-slate-600">
+          "ClientPilot keeps our client inquiries
+          organized and easy to manage."
+        </p>
+
+        <div className="mt-6">
+          <h3 className="font-bold">
+            Alex Morgan
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            Agency Owner
+          </p>
+        </div>
+      </Card>
+
+      {/* Card 2 */}
+      <Card>
+        <Quote className="mb-5 h-10 w-10 text-emerald-600" />
+
+        <div className="mb-4 flex gap-1 text-amber-500">
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+        </div>
+
+        <p className="leading-7 italic text-slate-600">
+          "The dashboard is simple, clean and helps our
+          team follow up faster."
+        </p>
+
+        <div className="mt-6">
+          <h3 className="font-bold">
+            Priya Sharma
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            Marketing Consultant
+          </p>
+        </div>
+      </Card>
+
+      {/* Card 3 */}
+      <Card>
+        <Quote className="mb-5 h-10 w-10 text-emerald-600" />
+
+        <div className="mb-4 flex gap-1 text-amber-500">
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+          <Star className="h-5 w-5 fill-current" />
+        </div>
+
+        <p className="leading-7 italic text-slate-600">
+          "Exactly the kind of lightweight CRM small
+          agencies need."
+        </p>
+
+        <div className="mt-6">
+          <h3 className="font-bold">
+            Rahul Verma
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            Freelance Designer
+          </p>
+        </div>
+      </Card>
+
+    </div>
+
+    <p className="mt-8 text-center text-sm text-slate-500">
+      These testimonials are sample content included for
+      demonstration purposes.
+    </p>
+  </div>
+</section>
+
+      {/* Footer */}
+      <footer className="border-t py-8 text-center text-sm text-slate-500">
+        <p>© 2026 ClientPilot</p>
+
+        <p className="mt-2">
+          Built for Digital Heroes Training Task
+        </p>
+
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://digitalheroesco.com"
           target="_blank"
           rel="noopener noreferrer"
+          className="mt-2 inline-block font-semibold text-emerald-600 hover:underline"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+          Digital Heroes
         </a>
       </footer>
-    </div>
+    </main>
   );
 }
