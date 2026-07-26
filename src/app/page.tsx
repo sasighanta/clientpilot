@@ -458,16 +458,26 @@ inquiry from a single modern dashboard.
 </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 text-center text-sm text-slate-500">
-        <p>© 2026 ClientPilot</p>
+      <footer className="border-t border-slate-200 bg-white py-8">
+  <div className="mx-auto max-w-7xl px-6 text-center">
+    <p className="text-slate-500">
+      © 2026 ClientPilot
+    </p>
 
-        <p className="mt-2">
-          Built with Next.js, Prisma & Supabase
-        </p>
+    <p className="mt-2 text-slate-500">
+      Built with Next.js, Prisma & Supabase
+    </p>
 
-        <p className="mt-2 inline-block font-semibold text-emerald-600 hover:underline">Created for the Digital Heroes Internship Task</p>
-         
-      </footer>
+    <a
+      href="https://digitalheroesco.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-4 inline-block font-semibold text-emerald-600 transition hover:text-emerald-700 hover:underline"
+    >
+      Built for Digital Heroes Training Task
+    </a>
+  </div>
+</footer>
     </main>
   );
 }
