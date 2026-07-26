@@ -10,7 +10,7 @@ A modern lightweight CRM (Customer Relationship Management) application that hel
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
  https://clientpilot-delta.vercel.app/
 
