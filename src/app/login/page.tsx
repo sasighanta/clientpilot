@@ -2,50 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import SubmitButton from "@/components/forms/SubmitButton";
 import Button from "@/components/ui/Button";
-import {
-  ArrowLeft,
-  Building2,
-  Eye,
-  EyeOff,
-} from "lucide-react";
+import { ArrowLeft, Building2 } from "lucide-react";
+
+import { login } from "@/actions/auth";
 
 export default function LoginPage() {
-  const router = useRouter();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [showPassword, setShowPassword] =
-    useState(false);
-
-  const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState("");
-
-  async function login(e: React.FormEvent) {
-    e.preventDefault();
-
-    setLoading(true);
-    setError("");
-
-    // Simulate a short loading state
-    await new Promise((resolve) =>
-      setTimeout(resolve, 500)
-    );
-
-    if (
-      email === "admin@clientpilot.com" &&
-      password === "clientpilot123"
-    ) {
-      localStorage.setItem("admin", "true");
-      router.push("/admin");
-    } else {
-      setError("Invalid email or password.");
-      setLoading(false);
-    }
-  }
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100 p-6">
@@ -60,7 +24,15 @@ export default function LoginPage() {
         </Link>
 
         <form
-          onSubmit={login}
+          action={async (formData) => {
+            setError("");
+
+            const result = await login(formData);
+
+            if (result?.error) {
+              setError(result.error);
+            }
+          }}
           className="space-y-5 rounded-3xl border border-slate-200 bg-white p-10 shadow-xl transition-all duration-300"
         >
           {/* Branding */}
@@ -74,34 +46,25 @@ export default function LoginPage() {
             </h1>
 
             <p className="mt-3 text-slate-500">
-              Secure access to your lead management
-              dashboard.
-            </p>
+  Secure access to the ClientPilot dashboard.
+</p>
           </div>
 
           {/* Email */}
           <input
+            name="email"
             type="email"
             placeholder="Email"
             className="w-full rounded-xl border border-slate-300 p-3 outline-none transition focus:border-emerald-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
 
           {/* Password */}
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="w-full rounded-xl border border-slate-300 p-3 pr-12 outline-none transition focus:border-emerald-500"
-              value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)
-              }
-            />
-
-          
-          </div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="w-full rounded-xl border border-slate-300 p-3 outline-none transition focus:border-emerald-500"
+          />
 
           {/* Error */}
           {error && (
@@ -120,20 +83,15 @@ export default function LoginPage() {
               Remember me
             </label>
           </div>
- <Button
-  type="submit"
-  disabled={loading}
-  className="w-full"
->
-  {loading ? "Signing In..." : "Login"}
-</Button>
-          
+
+          {/* Login Button */}
+          <SubmitButton />
 
           {/* Demo Credentials */}
           <div className="rounded-xl bg-slate-100 p-4 text-sm">
             <p className="font-semibold">
-              Demo Credentials
-            </p>
+  Demo Admin Credentials
+</p>
 
             <p className="mt-2">
               Email:{" "}

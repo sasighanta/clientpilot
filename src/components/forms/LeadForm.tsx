@@ -48,7 +48,7 @@ export default function LeadForm() {
       </h2>
 
       <p className="mb-6 text-slate-500">
-        Tell us about your project and we'll get back to
+        Tell us about your project and we&apos;ll get back to
         you.
       </p>
 

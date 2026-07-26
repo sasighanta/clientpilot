@@ -1,32 +1,37 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export async function login(email: string, password: string) {
-  if (
-    email === process.env.ADMIN_EMAIL &&
-    password === process.env.ADMIN_PASSWORD
-  ) {
-    const cookieStore = await cookies();
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL!;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD!;
 
-    cookieStore.set("admin", "true", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24,
-    });
+export async function login(formData: FormData) {
+  const email = formData.get("email")?.toString();
+  const password = formData.get("password")?.toString();
 
-    return { success: true };
+  if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+    return {
+      error: "Invalid email or password.",
+    };
   }
 
-  return {
-    success: false,
-    message: "Invalid credentials",
-  };
+  const cookieStore = await cookies();
+
+ cookieStore.set("admin", "true", {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "strict",
+  path: "/",
+  maxAge: 60 * 60 * 24,
+});
+  redirect("/admin");
 }
 
 export async function logout() {
   const cookieStore = await cookies();
+
   cookieStore.delete("admin");
+
+  redirect("/login");
 }

@@ -4,6 +4,7 @@ import StatusButton from "@/components/dashboard/StatusButton";
 import { logout } from "@/actions/auth";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+
 import {
   Users,
   UserPlus,
@@ -42,23 +43,22 @@ export default async function AdminPage({
       createdAt: "desc",
     },
   });
+  type LeadType = (typeof leads)[number];
 
   const totalLeads = leads.length;
 
   const newLeads = leads.filter(
-    (lead) => lead.status === "New"
-  ).length;
+  (lead: LeadType) => lead.status === "New"
+).length;
 
-  const contactedLeads = leads.filter(
-    (lead) => lead.status === "Contacted"
-  ).length;
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const todayLeads = leads.filter(
-    (lead) => new Date(lead.createdAt) >= today
-  ).length;
+const contactedLeads = leads.filter(
+  (lead: LeadType) => lead.status === "Contacted"
+).length;
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const todayLeads = leads.filter(
+  (lead: LeadType) => new Date(lead.createdAt) >= today
+).length;
 
   if (leads.length === 0) {
     return (
@@ -107,12 +107,12 @@ export default async function AdminPage({
             </h1>
 
             <p className="mt-3 text-slate-500">
-              Welcome back, Admin 👋
-            </p>
+  Welcome back! 👋
+</p>
 
-            <p className="text-slate-500">
-              Manage all incoming client inquiries.
-            </p>
+<p className="text-slate-500">
+  Manage and track all incoming client inquiries.
+</p>
           </div>
 
           <div className="rounded-2xl bg-white p-5 shadow-md">
@@ -120,9 +120,9 @@ export default async function AdminPage({
               <UserCircle className="h-12 w-12 text-emerald-600" />
 
               <div>
-                <h3 className="font-bold">
-                  Admin
-                </h3>
+               <h3 className="font-bold">
+  Administrator
+</h3>
 
                 <p className="text-sm text-slate-500">
                   admin@clientpilot.com
@@ -181,7 +181,7 @@ export default async function AdminPage({
             <CalendarDays className="mb-3 h-10 w-10 text-purple-600" />
 
             <p className="text-slate-500">
-              Today's Leads
+              Today&apos;s Leads
             </p>
 
             <h2 className="mt-2 text-5xl font-black">
@@ -191,7 +191,7 @@ export default async function AdminPage({
         </div>
                 {/* Search */}
         <form className="mb-8">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <Card className="rounded-2xl p-5">
             <h2 className="mb-4 text-lg font-semibold">
               Search Leads
             </h2>
@@ -202,11 +202,11 @@ export default async function AdminPage({
               <input
                 name="search"
                 defaultValue={search}
-                placeholder="Search by client name or email..."
+                placeholder="Search leads by name or email..."
                 className="w-full text-lg outline-none placeholder:text-slate-400"
               />
             </div>
-          </div>
+          </Card>
         </form>
 
         {/* Leads Table */}
@@ -223,7 +223,7 @@ export default async function AdminPage({
             </thead>
 
             <tbody>
-              {leads.map((lead) => (
+              {leads.map((lead: LeadType) => (
                 <tr
                   key={lead.id}
                   className="border-b transition-colors hover:bg-emerald-50"
@@ -260,21 +260,15 @@ export default async function AdminPage({
       </div>
 
       {/* Footer */}
-      <footer className="mt-12 border-t py-8 text-center text-sm text-slate-500">
+      <footer className="border-t py-8 text-center text-sm text-slate-500">
         <p>© 2026 ClientPilot</p>
 
         <p className="mt-2">
-          Built for Digital Heroes Training Task
+          Built with Next.js, Prisma & Supabase
         </p>
 
-        <a
-          href="https://digitalheroesco.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block font-semibold text-emerald-600 hover:underline"
-        >
-          Digital Heroes
-        </a>
+        <p className="mt-2 inline-block font-semibold text-emerald-600 hover:underline">Created for the Digital Heroes Internship Task</p>
+         
       </footer>
     </main>
   );

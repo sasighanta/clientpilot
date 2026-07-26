@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+
 import SectionHeading from "@/components/ui/SectionHeading";
 import Navbar from "@/components/Navbar";
 import LeadForm from "@/components/forms/LeadForm";
@@ -38,12 +38,12 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-8 text-slate-600">
-            Never lose another inquiry.
+            Capture, organize, and manage every client inquiry in one place.
             <br />
             <br />
             ClientPilot helps agencies capture leads,
-            organize conversations and track every client
-            from one modern dashboard.
+organize client information, and track every
+inquiry from a single modern dashboard.
           </p>
 
           <div className="mt-10 flex gap-4">
@@ -377,8 +377,8 @@ export default function Home() {
         </div>
 
         <p className="leading-7 italic text-slate-600">
-          "ClientPilot keeps our client inquiries
-          organized and easy to manage."
+          &quot;ClientPilot keeps our client inquiries
+          organized and easy to manage.&quot;
         </p>
 
         <div className="mt-6">
@@ -405,8 +405,8 @@ export default function Home() {
         </div>
 
         <p className="leading-7 italic text-slate-600">
-          "The dashboard is simple, clean and helps our
-          team follow up faster."
+          &quot;The dashboard is simple, clean and helps our
+          team follow up faster.&quot;
         </p>
 
         <div className="mt-6">
@@ -433,8 +433,8 @@ export default function Home() {
         </div>
 
         <p className="leading-7 italic text-slate-600">
-          "Exactly the kind of lightweight CRM small
-          agencies need."
+          &quot;Exactly the kind of lightweight CRM small
+          agencies need.&quot;
         </p>
 
         <div className="mt-6">
@@ -462,17 +462,11 @@ export default function Home() {
         <p>© 2026 ClientPilot</p>
 
         <p className="mt-2">
-          Built for Digital Heroes Training Task
+          Built with Next.js, Prisma & Supabase
         </p>
 
-        <a
-          href="https://digitalheroesco.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block font-semibold text-emerald-600 hover:underline"
-        >
-          Digital Heroes
-        </a>
+        <p className="mt-2 inline-block font-semibold text-emerald-600 hover:underline">Created for the Digital Heroes Internship Task</p>
+         
       </footer>
     </main>
   );
