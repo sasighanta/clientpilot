@@ -38,7 +38,7 @@ A modern lightweight CRM (Customer Relationship Management) application that hel
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 ### Frontend
 
